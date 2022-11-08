@@ -1,6 +1,6 @@
 # loofah
 
-Generate a 6, 7, or 8-digit 2FA code from a 2FA secret key.
+Generate a 2FA code from a 2FA secret key.
 
 ## Install
 
