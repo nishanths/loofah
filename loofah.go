@@ -68,6 +68,11 @@ func main() {
 	flag.Usage = printUsage
 	flag.Parse()
 
+	if flag.NArg() != 0 {
+		printUsage()
+		os.Exit(2)
+	}
+
 	size := 6
 	if *f7 {
 		size = 7
