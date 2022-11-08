@@ -58,12 +58,12 @@ var (
 )
 
 func printUsage() {
-	fmt.Fprintf(os.Stderr, "usage: 2fa [-7] [-8] [-c]\n")
+	fmt.Fprintf(os.Stderr, "usage: loofah [-7] [-8] [-c]\n")
 }
 
 func main() {
 	log.SetFlags(0)
-	log.SetPrefix("2fa: ")
+	log.SetPrefix("loofah: ")
 
 	flag.Usage = printUsage
 	flag.Parse()
