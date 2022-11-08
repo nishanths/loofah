@@ -1,6 +1,7 @@
+// Command loofah prints 2FA codes for supplied 2FA secret keys.
 package main
 
-// Large portions of code in this file is copied or adapted from
+// Large portions of code in this file are copied or adapted from
 // github.com/rsc/2fa, whose license is reproduced below.
 
 /*
@@ -46,15 +47,18 @@ import (
 	"strings"
 	"time"
 	"unicode"
+
+	"github.com/atotto/clipboard"
 )
 
 var (
-	f7 = flag.Bool("7", false, "generate 7-digit code")
-	f8 = flag.Bool("8", false, "generate 8-digit code")
+	fClip = flag.Bool("c", false, "also copy code to clipboard")
+	f7    = flag.Bool("7", false, "generate 7-digit code")
+	f8    = flag.Bool("8", false, "generate 8-digit code")
 )
 
 func printUsage() {
-	fmt.Fprintf(os.Stderr, "usage: 2fa [-7] [-8]\n")
+	fmt.Fprintf(os.Stderr, "usage: 2fa [-7] [-8] [-c]\n")
 }
 
 func main() {
@@ -87,7 +91,13 @@ func main() {
 		log.Fatalf("invalid key: %v", err)
 	}
 
-	fmt.Printf("%0*d\n", size, totp(raw, time.Now(), size))
+	code := fmt.Sprintf("%0*d", size, totp(raw, time.Now(), size))
+	if *fClip {
+		if err := clipboard.WriteAll(code); err != nil {
+			log.Printf("error copying to clipboard: %s", err)
+		}
+	}
+	fmt.Println(code)
 }
 
 func noSpace(r rune) rune {
