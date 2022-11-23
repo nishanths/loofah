@@ -1,4 +1,5 @@
-// Command loofah prints a time-based 2FA code for a supplied 2FA secret key.
+// Command loofah prints a time-based 2fa code for a supplied 2fa secret
+// key.
 package main
 
 // Large portions of code in this file are copied or adapted from

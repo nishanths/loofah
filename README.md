@@ -1,6 +1,6 @@
 # loofah
 
-Print a time-based 2FA code from a supplied 2FA secret key.
+Print a time-based 2fa code from a supplied 2fa secret key.
 
 ## Install
 
